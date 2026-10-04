@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Day in the Life of a Stone Age Person - Narrative Writing</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#262b2b;--bg:#e9eeec;--card:#fff;--line:#c5cfcb;--ember:#d9631f;--moss:#4d6b4a;--ice:#cfe6ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:Lexend,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:18px 14px 50px}
+header{background:var(--ink);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:12px}
+header h1{margin:0 0 4px;font-size:clamp(1.3rem,4vw,1.9rem)}header p{margin:0;opacity:.85;font-size:.9rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+nav button{flex:1 1 90px;border:2px solid var(--line);background:var(--card);border-radius:999px;padding:6px 8px;font-size:.82rem}
+nav button.on{background:var(--ember);border-color:var(--ember);color:#fff}
+main{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+h2{margin:0 0 8px}h3{margin:18px 0 6px}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+.btn{background:var(--ink);color:#fff;border:0;border-radius:10px;padding:10px 18px;margin:10px 8px 0 0}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.card{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:.93rem}.card b{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.chip{background:#fff;border:2px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.92rem}
+.chip.on{background:var(--moss);border-color:var(--moss);color:#fff}
+.bank .chip{background:var(--ice);border-color:var(--ice);padding:4px 11px;font-size:.85rem}
+input[type=text]{font:inherit;padding:9px 12px;border:2px solid var(--line);border-radius:10px;width:100%;max-width:380px}
+textarea{width:100%;min-height:200px;font:inherit;padding:12px;border:2px solid var(--line);border-radius:10px;resize:vertical}
+.tip{background:#fff4e5;border-left:6px solid var(--ember);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.93rem}
+.meta{font-size:.85rem;opacity:.75}.tag{display:inline-block;background:var(--ice);border-radius:999px;padding:1px 10px;font-size:.78rem;margin-right:4px}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0}
+.opt.ok{background:#dcfce7;border-color:#16a34a}.opt.no{background:#fee2e2;border-color:#dc2626}
+.chk label{display:block;margin:6px 0}.good{color:#15803d}.warn{color:#b45309}
+.story{border:2px solid var(--ink);border-radius:12px;padding:20px 24px;font-size:1.05rem}.story h2{text-align:center}
+@media print{header,nav,.noprint,.btn{display:none!important}body{background:#fff}main{border:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>A Day in the Life of a Stone Age Person</h1><p>Independent narrative writing tutorial for 6th grade ELA</p></header>
+<nav id="nav" class="noprint" aria-label="Steps"></nav>
+<main id="main" aria-live="polite"></main>
+</div>
+<script>
+/* ===== EDIT CONTENT HERE ===== */
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const wc=s=>(s.trim().match(/\S+/g)||[]).length;
+const STD=[['ELA.6.C.1.2','Write a fictional narrative using narrative techniques, precise words and phrases, and figurative language.'],
+['ELA.6.C.1.5','Improve writing by planning, revising, and editing.'],['ELA.6.C.3.1','Follow the rules of standard English grammar, punctuation, capitalization, and spelling.'],
+['ELA.6.C.5.2','Use digital tools to produce writing.'],['ELA.6.V.1.1','Use academic vocabulary in writing.'],['ELA.K12.EE.6.1','Use appropriate voice and tone when writing.']];
+const STEPS=['Welcome','Review','Plan','Beginning','Middle','Ending','Revise','My Story'];
+const OPT={role:['Hunter','Gatherer','Toolmaker','Fire-keeper','Cave painter','Young scout'],
+ setting:['a cave above a frozen valley','a riverbank camp','a grassy plain with huge herds','a dark, dripping forest'],
+ goal:['find enough food','protect the band','finish an important tool','prove yourself to the group'],
+ conflict:['the fire goes out','a hunt goes wrong','a sudden storm hits','a rival band appears','a precious tool breaks','a wild animal threatens the camp'],
+ pov:['First person (I, my, we)','Third person (he, she, they)']};
+const ENC=[['Making or fixing a stone tool','Describe the sound of stone striking stone and how the tool feels in your hand.'],
+['Tracking animals','Show the clues your character reads: prints, broken twigs, smells. Slow the pace so readers feel the tension.'],
+['Gathering berries and roots','Use taste, smell, and touch. Which plants are safe? How does your character know?'],
+['Tending the fire','Describe the flames with figurative language. Why is the fire so important to the band?'],
+['Painting on the cave wall','Describe the colors, the materials, and what the painting means to your character.'],
+['Sharing a meal with the band','Add dialogue. Who speaks? What do they say about the day?'],
+['Meeting a stranger','Show how your character feels with their body and words, not just by naming the feeling.'],
+['Hearing a strange noise at night','Use sensory details and suspense. What could it be?']];
+const REV=[['Character','The person the story follows.','Ona, a young toolmaker, grips a flint blade with shaking hands.'],
+['Setting','Where and when the story happens.','A cold cave above a frozen valley at dawn.'],
+['Conflict','The problem the character must face.','The fire dies out during a storm.'],
+['Plot sequence','Beginning, middle with rising action, and an ending that solves the problem.','Wake up, search for food, face a danger, return safely.'],
+['Sensory details','Words for what the character sees, hears, smells, tastes, and feels.','Smoke stung my eyes and the ground trembled.'],
+['Figurative language','Similes, metaphors, and personification.','The wind howled like a hungry wolf.'],
+['Dialogue','Characters\' exact words with quotation marks.','"Stay low," Ona whispered. "The herd is close."'],
+['Pacing and transitions','Slow down exciting moments. Use words like first, soon, suddenly, and by dusk.','Suddenly, the ground shook.'],
+['Point of view and voice','Who tells the story, and the tone of the telling.','First person: I felt my heart pound.'],
+['Conclusion','Solve the problem and show what the character learned or felt.','As the fire glowed again, I knew the band was safe.']];
+const QZ=[{q:'Which sentence uses a simile?',o:['The fire crackled like laughing children.','The fire was hot.','The fire died.'],a:0,e:'A simile compares two things using like or as.'},
+{q:'Which sentence is punctuated correctly?',o:['"Run," shouted Ona, "the herd is coming!"','"Run" shouted Ona the herd is coming.','Run, shouted Ona, "the herd is coming!"'],a:0,e:'Dialogue needs quotation marks around the spoken words and commas in the right places.'},
+{q:'Which detail best shows setting with sensory language?',o:['It was a cave.','Cold drips echoed in the dark cave, and smoke stung my nose.','The cave was big.'],a:1,e:'Strong narratives use sounds, smells, and feelings, not just labels.'}];
+const BANK={b:['crept','glowed','shivered','echoed','crouched','flickered'],m:['sprinted','gripped','trembled','scanned','hissed','thundered'],e:['relief','proud','warmth','learned','safe','together']};
+const TRANS=['First','Soon','Meanwhile','Suddenly','Later','By dusk'],ACAD=['adapt','survive','resource','shelter','environment','community'];
+const START={b:['The first light of dawn crept across ','Crack! The sound echoed through ','I woke to the smell of smoke and '],
+ m:['Suddenly, ','"','Just then, '],e:['By the time the stars appeared, ','As I sat beside the fire, I realized ','The next morning, ']};
+const CHK=[['ELA.6.C.1.2',['I introduced a character and a setting.','I told events in a clear order with transitions.','I included a conflict and solved it.','I used dialogue with quotation marks.','I used sensory details and at least one simile or metaphor.']],
+['ELA.6.V.1.1',['I used at least two academic words (such as adapt, survive, or resource).']],
+['ELA.K12.EE.6.1',['My voice and tone fit my story (tense, exciting, calm, or sad).']],
+['ELA.6.C.3.1',['I checked capitalization, punctuation, and spelling.']],
+['ELA.6.C.5.2',['I typed my story and used spell check or another digital tool.']],
+['ELA.6.C.1.5',['I planned my story, revised at least one sentence, and edited my work.']]];
+/* ===== APP CODE ===== */
+let S={name:'',title:'',cname:'',role:'',setting:'',goal:'',conflict:'',pov:'',enc:[],b:'',m:'',e:'',chk:{}},st=0;
+try{const x=localStorage.getItem('stoneAgeStory');if(x)S=Object.assign(S,JSON.parse(x))}catch(e){}
+const save=()=>{try{localStorage.setItem('stoneAgeStory',JSON.stringify(S))}catch(e){}};
+const go=i=>{st=i;render();window.scrollTo(0,0)};
+const foot=()=>`<div class="noprint">${st>0?`<button class="btn alt" onclick="go(${st-1})">Back</button>`:''}${st<7?`<button class="btn" onclick="go(${st+1})">Next step</button>`:''}</div>`;
+const chips=k=>`<div class="chips">${OPT[k].map((o,i)=>`<button class="chip${S[k]===o?' on':''}" onclick="pick('${k}',${i})">${o}</button>`).join('')}</div>`;
+function pick(k,i){S[k]=OPT[k][i];save();render()}
+function tog(i){const n=ENC[i][0],j=S.enc.indexOf(n);if(j>=0)S.enc.splice(j,1);else if(S.enc.length<3)S.enc.push(n);save();render()}
+function resetAll(){if(confirm('This clears your whole story. Start a new one?')){S={name:'',title:'',cname:'',role:'',setting:'',goal:'',conflict:'',pov:'',enc:[],b:'',m:'',e:'',chk:{}};save();go(0)}}
+function ans(q,i,b){const ok=i===QZ[q].a;b.classList.add(ok?'ok':'no');$('f'+q).innerHTML=(ok?'✓ Correct! ':'Not quite. ')+QZ[q].e}
+function ins(k,t){const a=$('ta');a.value+=(a.value&&!/\s$/.test(a.value)&&!/^["]/.test(t)?' ':'')+t;S[k]=a.value;save();cnt(k);a.focus()}
+const MIN={b:60,m:120,e:50};
+function cnt(k){$('wc').textContent=wc(S[k])+' words (goal: '+MIN[k]+' or more)'}
+function ready(){return S.role&&S.setting&&S.goal&&S.conflict&&S.pov&&S.enc.length===3}
+function writeStep(k,title,tag,intro,extra){
+  if(!ready())return `<h2>${title}</h2><p class="tip">Finish your plan first. Choose every option in step 3, including exactly three encounters.</p><button class="btn" onclick="go(2)">Go to Plan</button>`;
+  const nm=S.cname||'your character';
+  return `<h2>${title}</h2><span class="tag">${tag}</span><p>${intro(nm)}</p>${extra||''}
+  <p class="meta"><b>Click to add sentence starters:</b></p><div class="chips bank">${START[k].map(t=>`<button class="chip" onclick='ins("${k}",${JSON.stringify(t)})'>${esc(t)}...</button>`).join('')}</div>
+  <p class="meta"><b>Strong word bank:</b></p><div class="chips bank">${BANK[k].map(t=>`<button class="chip" onclick="ins('${k}','${t}')">${t}</button>`).join('')}</div>
+  <textarea id="ta" aria-label="${title}" oninput="S.${k}=this.value;save();cnt('${k}')" placeholder="Type here...">${esc(S[k])}</textarea><p class="meta" id="wc"></p>`+foot();
+}
+const R=[
+()=>`<h2>Your mission</h2><p>You are about to travel back about 30,000 years. You will write a narrative about <b>a day in the life of a Stone Age person</b>. This tutorial guides you step by step: review, plan, write, revise, and submit.</p>
+ <label><b>First name and last initial</b><br><input type="text" id="nm" value="${esc(S.name)}" oninput="S.name=this.value;save()"></label>
+ <details><summary><b>Florida standards you will practice</b></summary><ul>${STD.map(s=>`<li><b>${s[0]}</b>: ${s[1]}</li>`).join('')}</ul></details>
+ <h3>How to turn it in</h3><p>When you finish, go to <b>My Story</b>, take a screenshot of your story, and upload it to Canvas.</p>
+ <button class="btn" onclick="go(1)">Start</button><button class="btn alt" onclick="resetAll()">Start a new story</button>`,
+()=>`<h2>Narrative writing review</h2><span class="tag">ELA.6.C.1.2</span><p>A narrative tells a story. Strong narratives include all of these parts:</p>
+ <div class="grid">${REV.map(r=>`<div class="card"><b>${r[0]}</b>${r[1]}<br><i>Example: ${r[2]}</i></div>`).join('')}</div>
+ <h3>Quick check</h3>${QZ.map((z,q)=>`<p><b>${q+1}. ${z.q}</b></p>${z.o.map((o,i)=>`<button class="opt" onclick="ans(${q},${i},this)">${o}</button>`).join('')}<p id="f${q}"></p>`).join('')}`+foot(),
+()=>`<h2>Plan your story</h2><span class="tag">ELA.6.C.1.5</span><p>Good writers plan first. Make your choices below.</p>
+ <h3>1. Your character's name</h3><input type="text" value="${esc(S.cname)}" oninput="S.cname=this.value;save()" placeholder="Make up a Stone Age name" aria-label="Character name">
+ <h3>2. Your character is a...</h3>${chips('role')}<h3>3. Your story happens in...</h3>${chips('setting')}
+ <h3>4. Your character wants to...</h3>${chips('goal')}<h3>5. The problem (conflict) is that...</h3>${chips('conflict')}
+ <h3>6. Who tells the story?</h3>${chips('pov')}
+ <h3>7. Choose exactly 3 encounters for your day (${S.enc.length}/3)</h3><div class="chips">${ENC.map((e,i)=>`<button class="chip${S.enc.includes(e[0])?' on':''}" onclick="tog(${i})">${e[0]}</button>`).join('')}</div>
+ <label><b>Story title</b><br><input type="text" value="${esc(S.title)}" oninput="S.title=this.value;save()" placeholder="Give your story a title"></label>
+ <p class="tip">${ready()?'✓ Your plan is complete. Move on to the Beginning.':'Choose every option to unlock the writing steps.'}</p>`+foot(),
+()=>writeStep('b','Write the beginning','ELA.6.C.1.2',nm=>`Hook your reader with a sound, an action, or a surprise. Introduce <b>${nm}</b>, a ${S.role.toLowerCase()}, in <b>${S.setting}</b>. Show that ${nm} wants to <b>${S.goal}</b>. Tell your story in <b>${S.pov.split(' (')[0].toLowerCase()}</b>.`,
+  `<div class="tip"><b>Show, don't tell:</b> instead of "It was cold," write "Frost bit my fingers as I crawled out of the cave."</div>`),
+()=>writeStep('m','Write the middle','ELA.6.C.1.2, V.1.1',nm=>`Build the rising action. Use your three encounters in order, then bring in your conflict: <b>${S.conflict}</b>. Include at least one line of dialogue, one simile or metaphor, and three sensory details.`,
+  `<div class="grid">${S.enc.map((n,i)=>`<div class="card"><b>Encounter ${i+1}: ${n}</b>${ENC.find(e=>e[0]===n)[1]}</div>`).join('')}</div>
+  <div class="tip"><b>Dialogue:</b> "Stay low," whispered Ona. Put the speaker's exact words in quotation marks and start a new paragraph when someone new speaks.</div>
+  <p class="meta"><b>Transitions:</b> ${TRANS.join(', ')}<br><b>Academic words to try:</b> ${ACAD.join(', ')}</p>`),
+()=>writeStep('e','Write the ending','ELA.6.C.1.2, K12.EE.6.1',nm=>`Solve the problem of <b>${S.conflict}</b>. Show how ${nm} changed or what ${nm} learned. End with a final image or thought that stays with the reader. Keep the same voice and tone you used in the rest of your story.`),
+()=>{const all=S.b+' '+S.m+' '+S.e,n=wc(all),sc=[[n>=230,'Length: '+n+' words (aim for 230 or more)'],[/["“]/.test(all),'Dialogue with quotation marks found'],[/\b(like|as)\b/i.test(all),'Possible simile found (like or as)'],[new RegExp('\\b('+TRANS.join('|')+')\\b','i').test(all),'Transition words found'],[new RegExp('\\b('+ACAD.join('|')+')','i').test(all),'Academic vocabulary found']];
+ return `<h2>Revise and edit</h2><span class="tag">ELA.6.C.1.5, C.3.1</span><p>Read your story out loud. Fix anything that sounds confusing. Then check each item.</p>
+ <h3>Quick scan</h3>${sc.map(s=>`<p class="${s[0]?'good':'warn'}">${s[0]?'✓':'!'} ${s[1]}</p>`).join('')}
+ <h3>Your checklist</h3><div class="chk">${CHK.map(g=>`<p class="meta"><b>${g[0]}</b></p>${g[1].map(t=>`<label><input type="checkbox" ${S.chk[t]?'checked':''} onchange="S.chk[this.dataset.t]=this.checked;save()" data-t="${esc(t)}"> ${t}</label>`).join('')}`).join('')}</div>
+ <p class="tip">Need to change something? Click Back to the Beginning, Middle, or Ending step and edit your writing.</p>`+foot()},
+()=>{const ps=(S.b+'\n\n'+S.m+'\n\n'+S.e).split(/\n+/).filter(x=>x.trim());
+ return `<div class="noprint"><h2>My story</h2><p><b>To submit:</b> take a screenshot of your story below and upload it to Canvas. If it is long, scroll and take more than one screenshot.</p>
+ <ul><li>Chromebook: Ctrl + Shift + Show Windows key</li><li>Windows: Windows key + Shift + S</li><li>Mac: Shift + Command + 4</li></ul>
+ <button class="btn" onclick="window.print()">Print or save as PDF</button><button class="btn alt" onclick="go(3)">Edit my story</button></div>
+ <div class="story"><h2>${esc(S.title||'My Stone Age Story')}</h2><p class="meta" style="text-align:center">By ${esc(S.name||'(add your name on the Welcome step)')} | ${wc(S.b+' '+S.m+' '+S.e)} words | ${new Date().toLocaleDateString()}</p>
+ ${ps.length?ps.map(p=>`<p>${esc(p)}</p>`).join(''):'<p class="warn">Your story is empty. Go back and write each part first.</p>'}</div>`}
+];
+function render(){
+  $('nav').innerHTML=STEPS.map((s,i)=>`<button class="${i===st?'on':''}" onclick="go(${i})">${i+1}. ${s}</button>`).join('');
+  $('main').innerHTML=R[st]();
+  const k={3:'b',4:'m',5:'e'}[st];if(k&&$('wc'))cnt(k);
+}
+render();
+</script>
+</body>
+</html>
